@@ -7,7 +7,7 @@ import { autobind } from "core-decorators"
 
 import LogoComponent from "components/LogoComponent/LogoComponent"
 import MenuButtonComponent from "components/MenuButtonComponent/MenuButtonComponent"
-import DropdownComponent from "components/UI/DropdownComponent"
+import SchoolSelectComponent from "components/SchoolSelectComponent/SchoolSelectComponent"
 import styles from "./NavigationContainer.css"
 
 export default class NavigationContainer extends Component {
@@ -15,13 +15,13 @@ export default class NavigationContainer extends Component {
     routes: PropTypes.object.isRequired,
     router: PropTypes.object.isRequired,
     customStyling: PropTypes.object.isRequired,
-    components: PropTypes.object.isRequired
+    components: PropTypes.object.isRequired,
   }
 
   constructor(props) {
     super(props)
     this.state = {
-      selected: false
+      selected: false,
     }
   }
 
@@ -36,7 +36,13 @@ export default class NavigationContainer extends Component {
   }
 
   render() {
-    const { routes, customStyling, router } = this.props
+    const {
+      auth,
+      routes,
+      customStyling,
+      router,
+      updateIpeds,
+    } = this.props
     return (
       <div
         data-ui-ref="NavigationContainer"
@@ -46,28 +52,28 @@ export default class NavigationContainer extends Component {
       >
         <LogoComponent />
         <div className={classnames(styles.items)}>
-          {compact(routes.toArray().map(({ slug, component, label }, i) => {
-            if(!label) return null
-            return (
-              <Link
-                className={classnames([
-                  styles.item,
-                  router.location.pathname === slug
-                    ? styles["item--active"]
-                    : null
-                  //"hvr-underline-from-center"
-                ])}
-                key={slug}
-                to={slug}
-              >
-                <span>
-                  {label}
-                </span>
-              </Link>
-            )
-          }))}
+          {compact(
+            routes.toArray().map(({ slug, component, label }, i) => {
+              if (!label) return null
+              return (
+                <Link
+                  className={classnames([
+                    styles.item,
+                    router.location.pathname === slug
+                      ? styles["item--active"]
+                      : null,
+                    //"hvr-underline-from-center"
+                  ])}
+                  key={slug}
+                  to={slug}
+                >
+                  <span>{label}</span>
+                </Link>
+              )
+            })
+          )}
         </div>
-        <DropdownComponent />
+        <SchoolSelectComponent auth={auth} updateIpeds={updateIpeds} />
         <MenuButtonComponent
           selected={this.state.selected}
           onClick={this._onSideMenuClick}

@@ -12,6 +12,7 @@ import makeGetComponentStyle from 'selectors/componentUI/makeGetComponentStyle';
 import NavigationContainer from 'containers/NavigationContainer/NavigationContainer';
 import { resize } from 'actions/resize';
 import { toggleMenu } from 'actions/componentUI';
+import { updateIpeds } from 'actions/auth';
 
 const DISPLAY_NAME = 'NavigationContainer';
 
@@ -19,6 +20,7 @@ const mapStateToProps = () => {
   const getComponentStyle = makeGetComponentStyle();
   return (state, ownProps) => {
     return {
+      auth: state.auth,
       router: state.router,
       routes: state.routes,
       customStyling: getComponentStyle(state, DISPLAY_NAME),
@@ -29,8 +31,9 @@ const mapStateToProps = () => {
 };
 
 const mapDispatchToProps = (dispatch, props) => ({
-  resize: data => dispatch(resize()),
-  toggleMenu: data => dispatch(toggleMenu())
+  resize: () => dispatch(resize()),
+  toggleMenu: () => dispatch(toggleMenu()),
+  updateIpeds: id => dispatch(updateIpeds(id))
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {

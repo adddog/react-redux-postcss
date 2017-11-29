@@ -3,6 +3,7 @@ import {
   AUTH_LOGIN_ERROR,
   AUTH_LOGIN_SUCCESS,
   AUTH_LOGOUT_SUCCESS,
+  AUTH_UPDATE_IPEDS,
 } from "actions/actionTypes"
 import Auth from "modules/Auth"
 import QS from "query-string"
@@ -10,9 +11,7 @@ import { has } from "lodash"
 
 import { Map } from "immutable"
 
-const RESET_LOGOUT = (
-  state
-) =>
+const RESET_LOGOUT = state =>
   state
     .set(
       "id_ipeds",
@@ -24,8 +23,12 @@ const RESET_LOGOUT = (
     .set("formSubmitted", null)
     .set("token", Auth.getToken())
     .set("isValidToken", Auth.isValidToken())
-    .set("isLoggedIn", true)// Auth.getToken() && Auth.isValidToken())
-    .set("schools", [])
+    .set("isLoggedIn", true) // Auth.getToken() && Auth.isValidToken())
+    .set("schools", {
+      100654: { label: "Alabama A & M University" },
+      100663: { label: "University of Alabama at Birmingham" },
+      100690: { label: "Amridge University" },
+    })
 
 const initialState = RESET_LOGOUT(new Map())
 
@@ -61,6 +64,11 @@ export default function auth(state = initialState, action) {
     case AUTH_LOGOUT_SUCCESS: {
       Auth.deauthenticateUser()
       return RESET_LOGOUT(state)
+    }
+    case AUTH_UPDATE_IPEDS: {
+      const { payload } = action
+      if (!payload) return state
+      return state.set("id_ipeds", payload)
     }
     default: {
       return state

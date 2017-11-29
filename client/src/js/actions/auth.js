@@ -2,6 +2,7 @@ import {
   AUTH_LOGIN,
   AUTH_LOGOUT,
   AUTH_LOGIN_SUCCESS,
+  AUTH_UPDATE_IPEDS,
 } from 'actions/actionTypes';
 
 export function login(payload = {}) {
@@ -23,4 +24,12 @@ export function loginSuccess(payload = {}) {
     type: AUTH_LOGIN_SUCCESS,
     payload: payload
   };
+}
+
+
+export function updateIpeds(payload = null) {
+  return {
+    type: AUTH_UPDATE_IPEDS,
+    payload: payload,
+  }
 }
