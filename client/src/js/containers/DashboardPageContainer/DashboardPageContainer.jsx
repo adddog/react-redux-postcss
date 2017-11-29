@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from "react"
 import classnames from "classnames"
-import Auth from "modules/Auth"
 import util from "util"
 import { autobind } from "core-decorators"
 import { DASHBOARD_PAGE_CONTAINER__COLUMN } from "utils/styling"

@@ -3,7 +3,6 @@ import {
   PERFORMANCE_HEARTS_ERROR
 } from 'actions/actionTypes';
 import moment from 'moment';
-import Auth from 'modules/Auth';
 import { Map } from 'immutable';
 import { values } from 'lodash';
 const initialState = new Map().set('hearts', {});
