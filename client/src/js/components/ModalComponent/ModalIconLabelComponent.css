@@ -1,0 +1,47 @@
+@import "vars/colors";
+@import "vars/sizes";
+@import "site/components/interaction";
+
+.root {
+
+    cursor: pointer;
+    user-select:none;
+
+  i {
+    font-size: var(--fs-textIcon--large);
+    color: var(--c-icons--selected);
+    width: var(--fs-textIcon--large);
+  }
+
+  span {
+    transition: padding-top 0.15s ease-out-sine;
+    padding-top: 0.7em;
+  }
+
+  &:hover {
+    span {
+      padding-top: 1em;
+      transition: padding-top 0.15s ease-out-sine;
+    }
+  }
+
+  &--yes {
+    &:hover {
+      i {
+        @extend %icon-confirm--yes;
+      }
+    }
+  }
+
+  &--no {
+    &:hover {
+      i {
+        @extend %icon-confirm--no;
+      }
+    }
+  }
+
+  &--padding{
+    padding:var(--card-padding)
+  }
+}

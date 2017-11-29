@@ -1,0 +1,72 @@
+@import "utilities/u-card";
+@import "vars/flex";
+@import "site/components/text";
+@import "vars/sizes";
+@import "vars/animations";
+@custom-media --tablet-max;
+
+.root {
+  animation-duration: 5s;
+}
+
+.root,
+.row {
+  position: relative;
+  display: flex;
+  flex-direction: var(--flex-stack);
+  align-content: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.row {
+  flex-direction: var(--flex-sequence);
+  justify-content: space-between;
+
+  &__item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: calc(50% - 0.2em);
+  }
+  &__item--wrapper {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+}
+
+.linkValidationText {
+  position: absolute;
+  left: 0;
+  top: -20px;
+  @extend %error;
+  opacity: 0;
+  transition: opacity 0.3s ease-out-sine;
+  &--error {
+    opacity: 1;
+    transition: opacity 0.3s ease-out-sine;
+  }
+}
+
+.action {
+}
+
+.caption {
+  position: relative;
+  width: 100%;
+}
+
+@media (--tablet-max) {
+  .row {
+    flex-direction: var(--flex-stack);
+    &__item {
+      width: 100%;
+    }
+  }
+  .action {
+    margin-bottom: 1em;
+  }
+}

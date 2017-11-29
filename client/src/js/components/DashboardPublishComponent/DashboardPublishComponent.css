@@ -1,0 +1,9 @@
+@import "vars/flex";
+.root{
+  position: relative;
+  flex-direction: var(--flex-sequence);
+  width: 100%;
+  /*height: var(--upload-height);*/
+  display: flex;
+  flex-wrap: wrap;
+}

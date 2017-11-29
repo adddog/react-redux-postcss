@@ -1,0 +1,76 @@
+@import "vars/colors";
+@import "vars/sizes";
+@import "site/components/button";
+@import "site/components/icons";
+
+:root {
+  --padding: 1.3em;
+  --padding-sm: 0.3em;
+}
+
+.root {
+  @extend %button;
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+  span{
+    user-select:none;
+  }
+  &--margin {
+    margin: 0.2em;
+  }
+  &--nopadding {
+   padding:0;
+  }
+  &--yes {
+    color: var(--c-green);
+  }
+  &--no {
+    color: var(--c-red);
+
+  }
+  &--nobackground {
+    background-color: transparent;
+  }
+  i {
+    @extend %text-icons;
+    padding-right: var(--padding);
+  }
+
+  &__label {
+    color: var(--c-text);
+
+    &--nopadding {
+      padding: 0;
+    }
+  }
+}
+
+.iconWrapper {
+  position: relative;
+  width: var(--icons);
+  height: var(--icons);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  position: relative;
+  font-size: var(--fs-textIcon);
+  padding: 0;
+  text-align: center;
+  &:before,
+  &:after {
+    height: var(--fs-textIcon);
+    width: var(--fs-textIcon);
+  }
+  &:hover {
+    &:before,
+    &:after {
+      top: 0;
+      left: 0;
+      height: var(--fs-textIcon);
+      width: var(--fs-textIcon);
+    }
+  }
+}

@@ -1,0 +1,94 @@
+@import "vars/flex";
+@import "vars/sizes";
+@import "utilities/u-card";
+@import "vars/colors";
+
+@custom-media --tablet;
+
+:root {
+  --p-v: var(--padding-l);
+  --p-h: calc(var(--padding-l) / 2);
+  --anim: 0.15s;
+}
+
+.root {
+  position: fixed;
+  opacity: 0;
+  visibility: hidden;
+  top: var(--header-height);
+  right: 0;
+  transform: translateX(100%);
+  transition: transform var(--anim) ease-in-out-sine;
+}
+
+.menu {
+  position: relative;
+  display: flex;
+  flex-direction: var(--flex-stack);
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: var(--padding-small);
+  margin-left: 0;
+  a {
+    position: relative;
+    text-decoration: none;
+    left: 0;
+    transition: left var(--anim) ease-in-out-sine;
+    color: var(--c-grey-darkest);
+    font-size: var(--fs-title);
+    padding-top: var(--p-v);
+    padding-bottom: var(--p-v);
+    padding-left: calc(var(--p-h)/2);
+    padding-right: var(--p-h);
+    span {
+      position: relative;
+      padding-left: var(--padding-top);
+      &:before {
+        position: absolute;
+        opacity: 0;
+        transform: scaleX(0);
+        transition: opacity var(--anim) ease-in-out-sine,
+          transform var(--anim) ease-in-out-sine,
+          left var(--anim) ease-in-out-sine;
+        background-color: var(--c-grey-mid);
+        left: 0;
+        top: 15%;
+        content: '';
+        height: 70%;
+        width: 1px;
+      }
+    }
+
+    &:hover {
+      left: var(--p-h);
+      transition: left var(--anim) ease-in-out-sine;
+      span {
+        &:before {
+          opacity: 1;
+          transform: scaleX(1);
+          transition: opacity var(--anim) ease-in-out-sine,
+            transform var(--anim) ease-in-out-sine,
+            left var(--anim) ease-in-out-sine;
+          left: calc(var(--padding-top) * -1);
+        }
+      }
+    }
+  }
+}
+
+.is--open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0%);
+  transition: transform var(--anim) ease-in-out-sine;
+}
+
+@media (--tablet) {
+  .root {
+    opacity: 0;
+    transform: translateX(100%);
+    visibility: hidden;
+  }
+}

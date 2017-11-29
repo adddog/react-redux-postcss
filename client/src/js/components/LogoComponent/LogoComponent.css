@@ -1,0 +1,6 @@
+@import "vars/sizes";
+@import "site/components/svgs";
+
+.root {
+  @extend %logo;
+}

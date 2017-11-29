@@ -1,0 +1,43 @@
+@import "vars/colors";
+@import "vars/sizes";
+@import "vars/transitions";
+@import "utilities/u-card";
+@import "utilities/u-mixins";
+
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+  &__anim__content {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: var(--card-padding);
+    @include responsive-ratio--before(9,16);
+  }
+  &__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+}

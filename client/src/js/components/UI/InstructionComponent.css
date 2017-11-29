@@ -1,0 +1,6 @@
+.root{
+  &--margin{
+    margin-bottom: 1em;
+  }
+}
+

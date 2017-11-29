@@ -1,0 +1,33 @@
+@import "utilities/u-card";
+@import "vars/colors";
+@import "vars/sizes";
+@import "site/components/tooltips";
+@import "vars/animations";
+
+.root {
+  visibility: hidden;
+  opacity: 0;
+  @extend %tooltip-pos;
+
+  &:hover {
+    .instructionIcon {
+      color: var(--c-grey-darkest);
+      background-color: var(--light-blue--hover);
+    }
+  }
+
+  &--nowrap {
+    white-space: nowrap;
+  }
+
+  &--pos-right {
+    left: auto !important;
+    right: 0 !important;
+  }
+}
+
+.instructionIcon {
+  color: var(--c-grey-dark);
+  background-color: var(--light-blue);
+  pointer-events: none;
+}

@@ -1,0 +1,12 @@
+@import "utilities/u-card";
+@import "vars/colors";
+@import "vars/sizes";
+@import "site/components/tooltips";
+@import "vars/animations";
+
+.root {
+  &--show {
+    opacity: 1 !important;
+    visibility: visible;
+  }
+}

@@ -1,0 +1,13 @@
+@import "vars/colors";
+@import "vars/sizes";
+@import "vars/flex";
+@import "utilities/u-card";
+
+.root{
+  padding: var(--padding-small);
+  P{
+    margin-top: 0.08em;
+    margin-bottom: 0.08em;
+  }
+}
+

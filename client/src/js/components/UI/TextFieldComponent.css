@@ -1,0 +1,42 @@
+@import "vars/sizes";
+@import "vars/colors";
+.root {
+  position: relative;
+  margin-right: calc(var(--fs-textIcon));
+  padding-right: 3px;
+  max-width: calc(100% - calc(var(--fs-textIcon) - 0.2em));
+  span {
+    position: absolute;
+    top: calc(50%);
+    transform: translateY(-50%);
+    font-size: var(--fs-textIcon);
+    right: calc(var(--fs-textIcon)*-1);
+    &:before {
+      transition: color easeOutSine 0.4s;
+      color: var(--c-icons);
+    }
+  }
+  &:hover,
+  &:focus {
+    span {
+      &:before {
+        transition: color easeOutSine 0.4s;
+        color: var(--c-icons--selected);
+      }
+    }
+  }
+
+  &--requiresCaption {
+    div:first-child {
+      div:first-child {
+        color: var(--c-coral-light) !important;
+      }
+    }
+  }
+
+  div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

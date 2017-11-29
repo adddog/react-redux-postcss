@@ -1,0 +1,77 @@
+@import "vars/colors";
+@import "vars/sizes";
+@import "vars/flex";
+@import "utilities/u-card";
+
+.root {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+  flex-direction: var(--flex-stack);
+  user-select:none;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: var(--flex-sequence);
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+.column {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  &--media {
+    display: flex;
+    flex:1;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+}
+
+.uploadContent {
+  position: relative;
+  flex-direction: var(--flex-sequence);
+  width: 100%;
+  /*height: var(--upload-height);*/
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.uploadMedia {
+  position: relative;
+  flex-direction: var(--flex-sequence);
+  width: 100%;
+  height: var(--upload-height);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.caption {
+  position: relative;
+}
+
+@svg-load phone url(phone.svg) {
+}
+
+.phone {
+  background: svg-inline(phone);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  margin-left:var(--card-padding--left);
+}
+
+.viewbook {
+  position: absolute;
+  left: 22%;
+  top: 13%;
+  width: 56.5%;
+  height: 73%;
+}

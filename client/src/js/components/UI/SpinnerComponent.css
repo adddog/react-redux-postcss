@@ -1,0 +1,19 @@
+@import "vars/sizes";
+.root{
+  &__wrapper{
+    position: absolute;
+    top:var(--header-height);
+    left:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100% - var(--header-height));
+    margin-top: 7em;
+  }
+
+  &--fixed{
+    position: fixed;
+    z-index: 2;
+  }
+}

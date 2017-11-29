@@ -1,0 +1,9 @@
+@import "utilities/u-card";
+
+.root{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+

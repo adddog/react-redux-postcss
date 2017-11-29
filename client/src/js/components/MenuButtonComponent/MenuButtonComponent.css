@@ -1,0 +1,11 @@
+@custom-media --tablet;
+
+.root {
+  display: block;
+}
+
+@media (--tablet) {
+  .root {
+    display: none;
+  }
+}

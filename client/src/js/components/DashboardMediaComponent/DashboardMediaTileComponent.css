@@ -1,0 +1,114 @@
+@import "utilities/u-card";
+@import "utilities/u-mixins";
+@import "vars/flex";
+@import "vars/colors";
+@import "site/components/interaction";
+
+:root{
+  --rotatation-deg:-8deg;
+  --scale-hover:1.1;
+  --scale-selected:1.2;
+}
+
+@mixin rotate {
+  transform: rotateZ(var(--rotatation-deg)) scale(var(--scale-hover));
+  perspective: 20em;
+  z-index: 3;
+}
+
+:root {
+  --border: 0 0 1px 0px var(--c-grey-dark) inset,
+    0 0 1px 0px var(--c-grey-dark);
+}
+
+.root {
+  position: relative;
+  margin: 2px 4px 2px 4px;
+  background-color: var(--light-blue--hover);
+  flex: 0;
+  width: 45px;
+  min-width: 45px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-in-out-sine;
+  @include responsive-ratio--before(3,4);
+
+  &:hover {
+    @include rotate;
+  }
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-image: 0;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+    user-drag: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    &:after {
+      @extend %media-tile-hover;
+      @extend %media-tile-hover--shadow;
+    }
+  }
+
+  &__is--selected {
+    transform: scale(var(--scale-selected));
+    z-index: 30;
+    &:after {
+      @extend %media-tile-hover;
+      position: absolute;
+    }
+    &:hover {
+      transform: rotateZ(var(--rotatation-deg)) scale(var(--scale-selected));
+    }
+  }
+
+  &__is--grabbed {
+    @include rotate;
+    img {
+      filter: blur(1px) grayscale(75%);
+    }
+  }
+
+  &__is--disabled {
+    cursor: not-allowed;
+    transform: none;
+    background-color: var(--light-coral--hover);
+    &:hover {
+      transform: none;
+    }
+  }
+
+  &__is--dragselected {
+    cursor: pointer;
+    &:after {
+      @extend %media-tile-hover;
+      position: absolute;
+      outline: 1px dashed var(--c-grey-dark);
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__trash {
+    @include responsive-ratio--after(3,4);
+    background-color: transparent;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:after {
+      position: absolute;
+    }
+
+    outline: 1px dashed var(--c-icons--selected);
+    outline-offset: 0px;
+    &:hover {
+      transform: none;
+    }
+  }
+}
+

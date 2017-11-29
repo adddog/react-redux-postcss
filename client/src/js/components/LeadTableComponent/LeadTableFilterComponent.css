@@ -1,0 +1,73 @@
+@import "vars/animations";
+@import "vars/colors";
+@import "vars/sizes";
+@import "vars/flex";
+@import "utilities/u-card";
+
+:root {
+    --filter-height: 120px;
+}
+
+.root {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: var(--flex-sequence);
+    width: 100%;
+    /*height: var(--filter-height);*/
+    transition: height easeOutSine 0.4s;
+}
+
+.settings {
+    display: flex;
+    flex: 1;
+    flex-direction: var(--flex-sequence);
+    align-items: flex-end;
+    padding: 0.3em 0.4em 0.3em 0.4em;
+    &--right {
+        justify-content: flex-end;
+    }
+
+    &--selected{
+        box-shadow: inset 0px 0px 27px 0px var(--drop-shadow-2);
+    }
+}
+
+.settingGroup {
+    display: flex;
+    flex-direction: var(--flex-stack);
+    height: var(--filter-height);
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+
+}
+
+.setting {
+    margin: 0.3em 0.4em;
+    display: flex;
+    flex-direction: var(--flex-stack);
+    flex-wrap: wrap;
+    box-shadow: var(--box-shadow--light);
+}
+
+.checkbox {
+    display: flex;
+    flex-direction: var(--flex-sequence);
+    padding-bottom: 0.3em;
+}
+
+.controls {
+    position: relative;
+    padding: 6px 14px 14px;
+    display: flex;
+    flex-direction: var(--flex-stack);
+    margin-bottom: 8px;
+}
+
+.tHeightShrink {
+    overflow: hidden;
+    height: 0px;
+    transition: height easeOutSine 0.4s;
+}

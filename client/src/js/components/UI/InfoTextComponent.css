@@ -1,0 +1,10 @@
+@import "site/components/text";
+@import "vars/transitions";
+.root{
+  @extend %instruction;
+
+  &--hide{
+    opacity: 0;
+    transition: opacity 0.2s ease-in-sine;
+  }
+}

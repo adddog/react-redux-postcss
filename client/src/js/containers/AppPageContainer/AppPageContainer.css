@@ -1,0 +1,10 @@
+@import "vars/flex";
+
+.root{
+  position: relative;
+  flex-direction: var(--flex-stack);
+  display: flex;
+  align-items: flex-start;
+  justify-content:  flex-start;
+  min-width: 100%;
+}

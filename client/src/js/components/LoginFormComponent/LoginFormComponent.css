@@ -1,0 +1,35 @@
+@import "utilities/u-card";
+@import "site/components/svgs";
+@import "utilities/u-error";
+@import "vars/colors";
+@import "vars/flex";
+@import "vars/sizes";
+
+.root {
+  background-color: var(--c-white);
+  padding: 20px;
+  border-radius: 14px;
+}
+
+.logo {
+  @extend %logo;
+  width: 100%;
+  background-position: 50%;
+}
+
+.title {
+  text-align: center;
+  padding-top: var(--padding-sm);
+  padding-bottom: var(--padding-sm);
+}
+
+.remember {
+  margin-top: calc(var(--padding-top) + 0.5em);
+  margin-bottom: calc(var(--padding-top) + 0.5em);
+  z-index: 3;
+}
+
+.submit__row {
+  position: relative;
+  display: flex;
+}

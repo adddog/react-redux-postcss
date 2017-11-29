@@ -1,0 +1,17 @@
+@import "site/components/text";
+@import "vars/colors";
+@import "vars/sizes";
+@import "vars/animations";
+@import "vars/transitions";
+.root {
+  position: relative;
+  padding-top: var(--padding-l);
+}
+
+.warning {
+  @extend %error;
+  position: absolute;
+  top:calc(var(--padding-l) / 2);
+  left:0;
+  color:var(--c-blue);
+}

@@ -1,0 +1,15 @@
+@import "vars/flex";
+@import "utilities/u-card";
+
+.root{
+  position: relative;
+  flex-direction: var(--flex-stack);
+  display: flex;
+  align-items: flex-start;
+  justify-content:  flex-start;
+  height:auto;
+}
+
+.LeadTableComponent{
+  overflow: none;
+}

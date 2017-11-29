@@ -1,0 +1,30 @@
+@import "site/components/leadData";
+@import "site/components/icons";
+@import "vars/sizes";
+
+.root {
+  @extend %setting-label;
+  justify-content: space-between;
+  input {
+    width: var(--icons) !important;
+  }
+  div{
+    width: var(--icons) !important;
+    height: var(--icons) !important;
+    cursor: pointer;
+    div{
+        margin-right: 0 !important;
+    }
+  }
+
+  &--left{
+    justify-content: flex-start;
+  }
+
+}
+.selected{
+    @extend %setting-label--selected;
+    span{
+      user-select:none;
+    }
+}

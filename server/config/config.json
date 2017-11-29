@@ -1,0 +1,29 @@
+{
+  "development": {
+    "use_env_variable": "db",
+    "pool": {
+      "min": 2,
+      "max": 10
+    }
+  },
+  "test": {
+    "username": "awsmaster",
+    "password": "M4ster!Pass55",
+    "database": "vbdash",
+    "host": "stage-vbdash.covb2ykzu1gv.us-west-2.rds.amazonaws.com",
+    "port": 5432,
+    "pool": {
+      "min": 2,
+      "max": 10
+    },
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "awsmaster",
+    "password": "M4ster!Pass55",
+    "database": "vbdash",
+    "host": "stage-vbdash.covb2ykzu1gv.us-west-2.rds.amazonaws.com",
+    "port": 5432,
+    "dialect": "postgres"
+  }
+}

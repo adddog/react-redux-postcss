@@ -1,0 +1,41 @@
+{
+  "leadDataTableFilter": {
+    "columns": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "birthday": "Birthday",
+      "attendanceYear": "College Attend Year",
+      "userHighSchool": "High School",
+      "gender": "Sex",
+      "ethnicity": "Ethnicity",
+      "firstGen": "First Gen",
+      "activeMilitary": "Militiary Vet/Active",
+      "income": "Household Income",
+      "mailingAddress": "Mailing Address 1",
+      "mailingAddressStreet": "Mailing Address 2",
+      "unitNumber": "Unit #",
+      "mailingAddressCity": "City",
+      "mailingAddressRegion": "State",
+      "mailingAddressCountry": "Country",
+      "mailingAddressZipcode": "Zip Code",
+      "phoneNumber": "Phone Number",
+      "selected_major": "Intended Major Code",
+      "selected_major_name": "Intended Major",
+      "gpa": "GPA",
+      "gpa100": "GPA100",
+      "first_pinned_date": "Date Hearted",
+      "updated_at": "Profile Last Updated"
+    },
+    "onlyDisplayColumnHeaders": true,
+    "allowColumnWrapping": false,
+
+    "csvExport": {
+      "onlyVisibleColumns": false,
+      "exportTableAsSeen": true,
+      "useCalendarForExport": true,
+      "useTableFilterForExport": true,
+      "useColummnsForExport": true
+    }
+  }
+}

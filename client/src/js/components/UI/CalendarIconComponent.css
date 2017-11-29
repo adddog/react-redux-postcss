@@ -1,0 +1,15 @@
+@import "vars/flex";
+@import "vars/colors";
+@import "site/components/leadData";
+@import "site/components/icons";
+
+.root {
+  display: flex;
+  flex-direction: var(--flex-sequence);
+  justify-content: space-between;
+  @extend %setting-label;
+}
+
+.selected{
+    @extend %setting-label--selected;
+}

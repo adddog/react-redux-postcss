@@ -1,0 +1,113 @@
+@import "utilities/u-card";
+@import "vars/animations";
+@import "vars/colors";
+@import "vars/sizes";
+@import "vars/flex";
+@custom-media --tablet-max;
+
+.root {
+    position: relative;
+    display: flex;
+    flex-direction: var(--flex-sequence);
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--c-grey-darkest);
+    width: 100%;
+    height: var(--header-height);
+}
+
+.items {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+    height: 100%;
+}
+
+.item {
+    position: relative;
+    height: 100%;
+    /*background-color: var(--c-grey);
+    transition: all 0.2s ease-out-sine;*/
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: var(--fs-title);
+    text-decoration: none;
+    white-space: nowrap;
+    color: var(--c-white);
+
+    &:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: var(--c-grey);
+        transform: scaleY(0);
+        opacity: 0;
+        transform-origin: bottom;
+        transition: all 0.1s ease-in-out-sine;
+    }
+
+    span {
+        position: relative;
+        margin: 0px 10px 0px 10px;
+        padding-bottom: 4px;
+        transition: color 0.2s ease-in-out-sine;
+        &:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--c-cyan-blue);
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.2s ease-in-out-sine;
+        }
+    }
+
+    &:hover {
+        color: var(--c-grey);
+        span {
+            &:before {
+                visibility: visible;
+                transform: scaleX(1);
+            }
+        }
+    }
+
+    &--active {
+        &:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: var(--c-grey);
+            transform: scaleY(1);
+            transform-origin: bottom;
+            opacity: 1;
+            transition: all 0.1s ease-in-out-sine;
+        }
+        span {
+            color:var(--c-grey-darkest);
+            &:before {
+                visibility: visible;
+                transform: scaleX(1);
+            }
+        }
+    }
+}
+
+@media (--tablet-max) {
+    .item {
+        display: none;
+    }
+}

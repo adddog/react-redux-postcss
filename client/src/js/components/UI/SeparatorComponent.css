@@ -1,0 +1,46 @@
+@import "vars/colors";
+
+:root{
+  --checkbox-width:40px;
+}
+
+.root {
+  position: relative;
+  height: 100%;
+  min-height: 1px;
+  display: flex;
+  margin-left: 0.7em;
+  margin-right: 0.7em;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  span {
+    margin-left: 2px;
+  }
+
+  &:after {
+    content: '';
+    width: 1px;
+    height: 40%;
+    position: absolute;
+    left: 0;
+    background-color: var(--c-grey-mid);
+  }
+
+  &--horizontal {
+    height: 1px;
+    margin:0;
+    top:1em;
+    width: 100%;
+
+    &:after {
+      height: 100%;
+      /*transform: translateX(-50%);
+      left: calc(50% - var(--checkbox-width));*/
+      width: calc(100% - var(--checkbox-width));
+    }
+  }
+
+  &--below {
+  }
+}

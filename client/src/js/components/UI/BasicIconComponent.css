@@ -1,0 +1,40 @@
+@import "vars/colors";
+@import "vars/sizes";
+@import "site/components/icons";
+
+@svg-load trash_icon url(trash_icon.svg) {
+}
+
+.root {
+  position: relative;
+  cursor: pointer;
+  width: var(--icons);
+  height: var(--icons);
+
+  &--abs{
+    position: absolute;
+    top:0;
+    left:0;
+  }
+
+  &--abs--center{
+      position: absolute;
+      left:50%;
+      top:50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+}
+/*
+hover goes here
+*/
+.iconTemplate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.trash {
+  mask: svg-inline(trash_icon) no-repeat 50% 50%;
+}

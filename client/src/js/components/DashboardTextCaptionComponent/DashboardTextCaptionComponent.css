@@ -1,0 +1,15 @@
+@import "vars/sizes";
+@import "site/components/text";
+@import "vars/animations";
+@import "utilities/u-card";
+
+.root {
+  position: relative;
+  width: 100%;
+  padding: var(--padding-small);
+  animation-duration: 6s;
+}
+.wordsRemaining {
+  position: absolute;
+  top: calc(var(--fs-base)*-1);
+}

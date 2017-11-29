@@ -1,0 +1,12 @@
+{
+  "DashboardMediaComponent":{
+    "mediaDrag":"Click & Drag media to re-order",
+    "selectDrag":"Hold & Drag to multi-select"
+  },
+  "csvExport":{
+    "filteredColumnValuesLengthWarning":"No data in the table to export"
+  },
+  "LeadTableFilterHeadersComponent":{
+    "amountOfAppliedFiltersWarning":"Maximum visible columns reached."
+  }
+}

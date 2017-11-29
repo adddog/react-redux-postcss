@@ -1,0 +1,24 @@
+@import "vars/colors";
+@import "vars/sizes";
+@import "vars/transitions";
+@import "site/components/icons";
+.root {
+  cursor: pointer;
+  width: calc(var(--fs-textIcon) * 1.6);
+  height: calc(var(--fs-textIcon) * 1.6);
+  font-size: var(--fs-textIcon);
+  color:var(--c-icons--selected);
+  border-radius: 50%;
+  background-color: var(--c-grey-light);
+  box-shadow: var(--box-shadow);
+
+  &:before{
+    @extend %text-fa-before;
+  }
+
+  &:hover{
+    color:var(--c-red);
+    transition: var(--t-icons)
+  }
+
+}

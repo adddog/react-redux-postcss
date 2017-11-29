@@ -1,0 +1,23 @@
+@import "utilities/u-card";
+@import "vars/sizes";
+@import "site/components/tooltips";
+
+.root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.tooltip {
+  @extend %tooltip;
+  padding: var(--padding-small) !important;
+  flex: 1;
+}
+
+.iconTimes {
+  &:after {
+    left: -2px !important;
+  }
+}

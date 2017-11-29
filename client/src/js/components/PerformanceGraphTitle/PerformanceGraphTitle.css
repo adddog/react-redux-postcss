@@ -1,0 +1,8 @@
+@import "vars/sizes";
+.root{
+  position: relative;
+  color:  rgb(71, 181, 193);
+  font-weight: bold;
+  text-align: center;
+  padding: var(--padding-small);
+}
