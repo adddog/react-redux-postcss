@@ -5,6 +5,7 @@ import {
   AUTH_LOGOUT_SUCCESS,
 } from "actions/actionTypes"
 import Auth from "modules/Auth"
+console.log('Auth:', Auth)
 import QS from "query-string"
 import { has } from "lodash"
 

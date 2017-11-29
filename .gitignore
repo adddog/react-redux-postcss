@@ -1,9 +1,7 @@
 .env
 node_modules
 
-client/dist/*.js
-client/dist/*.map
-client/dist/*.css
+client/dist/*
 client/dist/images
 client/dist/fonts/
 client/dist/json/
