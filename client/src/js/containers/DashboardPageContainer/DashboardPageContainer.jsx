@@ -10,7 +10,7 @@ import DashboardTextCaptionComponent from "components/DashboardTextCaptionCompon
 import DashboardPublishComponent from "components/DashboardPublishComponent/DashboardPublishComponent"
 import UploadMediaComponent from "components/UploadMediaComponent/UploadMediaComponent"
 import FileUploadComponent from "components/FileUploadComponent/FileUploadComponent"
-import ViewbookComponent from "components/ViewbookComponent/ViewbookComponent"
+//import ViewbookComponent from "components/ViewbookComponent/ViewbookComponent"
 import ModalComponent from "components/ModalComponent/ModalComponent"
 
 import styles from "./DashboardPageContainer.css"
@@ -90,6 +90,7 @@ export default class DashboardPageContainer extends Component {
       size.height * SVG_ASPECT,
       size.height
     )
+  return null
     return (
       <ViewbookComponent
         style={{
