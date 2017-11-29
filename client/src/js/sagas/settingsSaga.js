@@ -3,16 +3,17 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { SETTINGS_SET, SETTINGS_REQUEST } from 'actions/actionTypes';
 
 import { JsonApiRequest, hasError } from './api';
-import settings from '../../../dist/json/settings.json'
 
-const API = payload => {
-  //TODO api hook
-  if (settings) {
-    return settings
-  }
-};
+
+const API = (payload) => {
+    //TODO api hook
+    const api = process.env.DEV ? "/json/settings.json" : "";
+    console.log(api);
+    return JsonApiRequest(api)
+}
 
 function* makeSettingsRequest() {
+  return
   const settings = yield call(API);
   if (hasError(settings)) {
     console.error("error getting settings, ", error);

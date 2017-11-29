@@ -8,7 +8,7 @@ import {
   publishViewbook
 } from './dashboardSaga';
 import componentUI from './componentUISaga';
-import settings from './settingsSaga';
+//import settings from './settingsSaga';
 import copy from './copySaga';
 import { leadData } from './leadDataSaga';
 import { leadDataDate } from './leadDataSaga';
@@ -45,7 +45,7 @@ const rootSagas = [
   premiumPartnerApi,
   resize,
   copy,
-  settings,
+  //settings,
   videoLinkValidation,
   videoLinkConfirmed,
   publishViewbook,

@@ -5,7 +5,6 @@ import {
   AUTH_LOGOUT_SUCCESS,
 } from "actions/actionTypes"
 import Auth from "modules/Auth"
-console.log('Auth:', Auth)
 import QS from "query-string"
 import { has } from "lodash"
 
@@ -25,11 +24,10 @@ const RESET_LOGOUT = (
     .set("formSubmitted", null)
     .set("token", Auth.getToken())
     .set("isValidToken", Auth.isValidToken())
-    .set("isLoggedIn", Auth.getToken() && Auth.isValidToken())
+    .set("isLoggedIn", true)// Auth.getToken() && Auth.isValidToken())
     .set("schools", [])
 
-const initialState = new Map()
-RESET_LOGOUT(initialState)
+const initialState = RESET_LOGOUT(new Map())
 
 export default function auth(state = initialState, action) {
   switch (action.type) {
@@ -44,7 +42,6 @@ export default function auth(state = initialState, action) {
     case AUTH_LOGIN_SUCCESS: {
       const { user } = action
       const { jwt } = user
-      console.log(user)
       if (user.remember) {
         Auth.authenticateUser(jwt)
       }
