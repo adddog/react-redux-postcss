@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from "react"
 import LoginFormComponent from "components/LoginFormComponent/LoginFormComponent"
-import Auth from "modules/Auth"
 import classnames from "classnames"
 import Util from "util"
 

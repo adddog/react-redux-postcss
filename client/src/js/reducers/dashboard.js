@@ -20,7 +20,6 @@ import {
   DASHB_VIEWBOOK_MEDIA_UPDATE,
   INSTRUCTION_CLICKED,
 } from "actions/actionTypes"
-import Auth from "modules/Auth"
 import { Map } from "immutable"
 import {
   assign,

@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import Auth from '../modules/Auth';
+import Auth from 'modules/Auth';
 import Table from 'rc-table';
 import {Card, CardTitle, CardText} from 'material-ui/Card';
 import CircularProgress from 'material-ui/CircularProgress';

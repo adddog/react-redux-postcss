@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from "react"
-import Auth from "modules/Auth"
 import classnames from "classnames"
 import Util from "util"
 import { NavLink, Link } from "react-router-dom"

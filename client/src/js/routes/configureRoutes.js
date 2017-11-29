@@ -11,14 +11,7 @@ import LeadDataPageMediator from 'mediators/LeadDataPageMediator';
 import PerformancePageMediator from 'mediators/PerformancePageMediator';
 //import SchoolDashboardPageMediator from 'containers/SchoolDashboardPageMediator';
 
-import Auth from 'modules/Auth';
-
 import { Route, Switch, Redirect } from 'react-router';
-
-function logout(nextState, replaceState) {
-  Auth.deauthenticateUser();
-  // replaceState(null, '/login');
-}
 
 export const ROUTES = {
   root: {
