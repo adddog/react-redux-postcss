@@ -1,0 +1,61 @@
+@import "vars/sizes";
+@import "vars/colors";
+.root {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 200%;
+}
+
+.menu-container,
+.selectedValue {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  width: 100%;
+}
+
+.selectedValue {
+  color: var(--c-white);
+}
+
+.menu-container {
+}
+
+.menu {
+  position: absolute;
+  z-index: 100;
+  overflow: auto;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 200px;
+  background-color: green;
+  &-input {
+    position: absolute;
+    z-index: 2;
+    font-size: var(--fs-base);
+    height: var(--fs-base);
+    background-color: blue;
+  }
+  &-list {
+    position: absolute;
+    z-index: 1;
+    background-color: red;
+    overflow: auto;
+    top: var(--fs-base);
+    left: 0;
+    width: 100px;
+    overflow: hidden;
+    &-item{
+      margin-top: 0.1em;
+      margin-bottom: 0.1em;
+      cursor: pointer;
+      &:hover{
+        padding-left: 0.2em;
+      }
+    }
+  }
+}

@@ -1,111 +1,144 @@
-import { merge, isError } from 'lodash';
-import { delay } from 'redux-saga';
-import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { merge, isError } from "lodash"
+import { delay } from "redux-saga"
+import { call, put, takeLatest, select } from "redux-saga/effects"
 
 import {
   API_SETTINGS_POST,
   PREMIUM_PARTNER_REQUEST,
   PREMIUM_PARTNER_SUCCESS,
   PREMIUM_PARTNER_ERROR,
-  SETTINGS_SET
-} from 'actions/actionTypes';
+  SETTINGS_SET,
+  API_ALL_SCHOOLS_REQUEST,
+  API_ALL_SCHOOLS_SUCCESS
+} from "actions/actionTypes"
 
-import { JsonApiRequest, postRequest, getToken, hasError } from './api';
+import {
+  JsonApiRequest,
+  postRequest,
+  getToken,
+  hasError,
+} from "./api"
 
-import { getAppSettings } from 'selectors/makeGetAppSettings';
+import { getAppSettings } from "selectors/makeGetAppSettings"
 
 const API_PREMIUM_PARTNER_GET = (token, query = {}) => {
-  console.log('query:', query);
+  console.log("query:", query)
   return JsonApiRequest(`${process.env.GO_API}v1/partner`, {
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      Authorization: `bearer ${token}`
+      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: `bearer ${token}`,
     },
-    query
-  });
-};
+    query,
+  })
+}
 
 const API_PREMIUM_PARTNER_NEW = (token, body = {}, headers = {}) => {
   return postRequest(`${process.env.GO_API}v1/partner`, {
     headers: merge(
       {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: `bearer ${token}`
+        "Content-Type": "application/x-www-form-urlencoded",
+        Authorization: `bearer ${token}`,
       },
       headers
     ),
-    body
-  });
-};
+    body,
+  })
+}
 
 const API_SETTINGS = (token, body) => {
   return postRequest(`${process.env.GO_API}v1/partner/settings`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
-      Authorization: `bearer ${token}`
+      "Content-Type": "application/json",
+      Authorization: `bearer ${token}`,
     },
-    body
-  });
-};
+    body,
+  })
+}
 
 function* makePremiumPartnerRequest(action) {
-  const payload = action.payload || {};
-  const token = yield getToken(payload);
+  const payload = action.payload || {}
+  const token = yield getToken(payload)
 
-  const ipeds = yield select(state => state.auth.get('id_ipeds'));
-  const premiumPartnerData = yield call(API_PREMIUM_PARTNER_GET, token, {
-    id: ipeds
-  });
+  const ipeds = yield select(state => state.auth.get("id_ipeds"))
+  const premiumPartnerData = yield call(
+    API_PREMIUM_PARTNER_GET,
+    token,
+    {
+      id: ipeds,
+    }
+  )
 
   if (isError(premiumPartnerData.response)) {
     yield put({
       type: PREMIUM_PARTNER_ERROR,
-      response: premiumPartnerData
-    });
+      response: premiumPartnerData,
+    })
   } else {
     //NO SCHOOL
     if (hasError(premiumPartnerData)) {
-      const ipeds = yield select(state => state.auth.get('id_ipeds'));
+      const ipeds = yield select(state => state.auth.get("id_ipeds"))
       //NEW SCHOOL
       const newSchoolData = yield call(
         API_PREMIUM_PARTNER_NEW,
         token,
         JSON.stringify({
-          id: ipeds
+          id: ipeds,
         }),
-        { 'Content-Type': 'application/json' }
-      );
+        { "Content-Type": "application/json" }
+      )
       if (hasError(newSchoolData)) {
       }
       yield put({
         type: PREMIUM_PARTNER_SUCCESS,
-        response: newSchoolData
-      });
+        response: newSchoolData,
+      })
     } else {
       yield put({
         type: PREMIUM_PARTNER_SUCCESS,
-        response: premiumPartnerData
-      });
+        response: premiumPartnerData,
+      })
     }
   }
 }
 
+const GET_ALL_SCHOOLS_API = () => {
+    return JsonApiRequest(`${process.env.DEV ? "/json/schools.json" : ""}`)
+}
+
+function* makeGetAllSchools() {
+  const schools = yield call(
+    GET_ALL_SCHOOLS_API
+  )
+  if (hasError(schools)) {
+    console.error(`FAILED TO GET ALL SCHOOLS`)
+  } else {
+    yield put({
+      type: API_ALL_SCHOOLS_SUCCESS,
+      response: schools,
+    })
+  }
+}
+
+export function* getAllSchools() {
+  yield takeLatest(API_ALL_SCHOOLS_REQUEST, makeGetAllSchools)
+}
+
 export function* premiumPartnerApi() {
-  yield takeLatest(PREMIUM_PARTNER_REQUEST, makePremiumPartnerRequest);
+  yield takeLatest(PREMIUM_PARTNER_REQUEST, makePremiumPartnerRequest)
 }
 
 function* doDashboardSettings(action) {
-  yield call(delay, 3000);
-  const settings = yield select(getAppSettings);
-  const token = yield getToken();
+  yield call(delay, 3000)
+  const settings = yield select(getAppSettings)
+  const token = yield getToken()
   const publishResponse = yield call(
     API_SETTINGS,
     token,
     JSON.stringify(settings)
-  );
+  )
 }
 
 export function* saveSettings() {
-  yield takeLatest(API_SETTINGS_POST, doDashboardSettings);
+  yield takeLatest(API_SETTINGS_POST, doDashboardSettings)
 }

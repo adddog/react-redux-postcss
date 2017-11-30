@@ -4,6 +4,7 @@ import './index.css';
 import {
   RESIZE,
   STYLE_REQUEST,
+  API_ALL_SCHOOLS_REQUEST,
   SETTINGS_REQUEST,
   COPY_REQUEST,
   PREMIUM_PARTNER_REQUEST
@@ -52,6 +53,7 @@ window.addEventListener('resize', () => throttleResize());
 
 store.dispatch({ type: COPY_REQUEST });
 store.dispatch({ type: SETTINGS_REQUEST });
+store.dispatch({ type: API_ALL_SCHOOLS_REQUEST });
 //load custom styles
 //TODO
 //store.dispatch({type: STYLE_REQUEST})

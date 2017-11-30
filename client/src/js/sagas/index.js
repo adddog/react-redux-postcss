@@ -1,4 +1,4 @@
-import { premiumPartnerApi, saveSettings } from './apiSaga';
+import { premiumPartnerApi, saveSettings,getAllSchools } from './apiSaga';
 import { login, logout } from './loginSaga';
 import resize from './resizeSaga';
 import {
@@ -42,6 +42,7 @@ const makeRestartable = saga => {
 const rootSagas = [
   login,
   saveSettings,
+  getAllSchools,
   premiumPartnerApi,
   resize,
   copy,

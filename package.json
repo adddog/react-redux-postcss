@@ -60,6 +60,7 @@
     "material-ui-icons": "^1.0.0-alpha.19",
     "moment": "^2.18.1",
     "nodemailer": "^4.0.1",
+    "partner_portal": "git+ssh:git@github.com:MerrickClark/premium.git",
     "passport-local": "^1.0.0",
     "path-parse": "^1.0.5",
     "pg": "^6.4.0",

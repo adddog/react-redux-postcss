@@ -3,6 +3,7 @@ import {
   AUTH_LOGIN_ERROR,
   AUTH_LOGIN_SUCCESS,
   AUTH_LOGOUT_SUCCESS,
+  API_ALL_SCHOOLS_SUCCESS,
   AUTH_UPDATE_IPEDS,
 } from "actions/actionTypes"
 import Auth from "modules/Auth"
@@ -24,11 +25,14 @@ const RESET_LOGOUT = state =>
     .set("token", Auth.getToken())
     .set("isValidToken", Auth.isValidToken())
     .set("isLoggedIn", true) // Auth.getToken() && Auth.isValidToken())
-    .set("schools", {
-      100654: { label: "Alabama A & M University" },
-      100663: { label: "University of Alabama at Birmingham" },
-      100690: { label: "Amridge University" },
-    })
+    .set("schools", [
+      { id_ipeds: 100654, name: "Alabama A & M University" },
+      {
+        id_ipeds: 100663,
+        name: "University of Alabama at Birmingham",
+      },
+      { id_ipeds: 100690, name: "Amridge University" },
+    ])
 
 const initialState = RESET_LOGOUT(new Map())
 
@@ -64,6 +68,10 @@ export default function auth(state = initialState, action) {
     case AUTH_LOGOUT_SUCCESS: {
       Auth.deauthenticateUser()
       return RESET_LOGOUT(state)
+    }
+    case API_ALL_SCHOOLS_SUCCESS: {
+      const { response } = action
+      return state.set("schools", response)
     }
     case AUTH_UPDATE_IPEDS: {
       const { payload } = action
