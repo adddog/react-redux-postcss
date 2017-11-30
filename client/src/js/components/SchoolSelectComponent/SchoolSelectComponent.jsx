@@ -96,7 +96,7 @@ export default class SchoolSelectComponent extends Component {
           <ReactList
             itemRenderer={::this.renderItem}
             length={this.listDisplayData.size}
-            type="uniform"
+            type="simple"
           />
         </div>
       </div>
