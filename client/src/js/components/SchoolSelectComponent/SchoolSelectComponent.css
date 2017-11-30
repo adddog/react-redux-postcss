@@ -1,15 +1,20 @@
 @import "vars/sizes";
 @import "vars/colors";
+:root{
+  --width: 100px;
+  --menu-height: 200px;
+
+}
 .root {
   position: relative;
+  width: var(--width);
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  height: 200%;
+  height: 100%;
 }
 
-.menu-container,
 .selectedValue {
   position: relative;
   flex: 1;
@@ -17,11 +22,12 @@
   width: 100%;
 }
 
-.selectedValue {
-  color: var(--c-white);
-}
 
 .menu-container {
+  position: absolute;
+  top:100%;
+  width: 100%;
+  height: var(--menu-height);
 }
 
 .menu {
@@ -30,8 +36,8 @@
   overflow: auto;
   top: 0;
   left: 0;
-  width: 100px;
-  height: 200px;
+  width: 100%;
+  height: var(--menu-height);
   background-color: green;
   &-input {
     position: relative;
@@ -48,7 +54,7 @@
     overflow: auto;
     top: var(--fs-base);
     left: 0;
-    width: 100px;
+    width: var(--width);
     overflow: hidden;
     &-item{
       margin-top: 0.1em;

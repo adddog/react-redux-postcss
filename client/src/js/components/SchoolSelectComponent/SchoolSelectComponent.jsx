@@ -87,6 +87,7 @@ export default class SchoolSelectComponent extends Component {
   }
 
   _renderList() {
+    console.log(this.listDisplayData.size);
     return (
       <div className={classnames([styles["menu"]])}>
         <input
@@ -117,9 +118,9 @@ export default class SchoolSelectComponent extends Component {
         >
           {this.state.selectedValue}
         </span>
-        <span className={classnames([styles["menu-container"]])}>
+        <div className={classnames([styles["menu-container"]])}>
           {this.state.opened ? this._renderList() : null}
-        </span>
+        </div>
       </div>
     )
   }
