@@ -1,10 +1,11 @@
-@svg-load logo url(schoold_logo.svg) {
+@svg-load logo url(the-college-fair-logo.svg) {
 }
 
 %logo{
   position: relative;
+  margin: 0 0 0 25px;
   width: var(--header-logo-width);
-  height: calc(var(--header-logo-width) * 0.2677);
+  height: calc(var(--header-logo-width) * 0.2);
     background: svg-inline(logo);
   background-repeat: no-repeat;
 }
