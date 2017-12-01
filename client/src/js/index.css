@@ -4,7 +4,7 @@
 @import "vars/sizes";
 
 body {
-    font-family: var(--ff-base);
+    font-family: var(--ff-base-light);
     font-size: var(--fs-base);
     color: var(--c-grey-darkest);
     background-color: var(--c-grey);
@@ -33,6 +33,6 @@ button {
 }
 
 * {
-    font-family: var(--ff-base);
+    font-family: var(--ff-base-light);
     box-sizing: border-box;
 }
