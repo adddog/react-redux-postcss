@@ -8,6 +8,7 @@ import { autobind } from "core-decorators"
 import LogoComponent from "components/LogoComponent/LogoComponent"
 import MenuButtonComponent from "components/MenuButtonComponent/MenuButtonComponent"
 import SchoolSelectComponent from "components/SchoolSelectComponent/SchoolSelectComponent"
+import UserMenuComponent from "components/UserMenuComponent/UserMenuComponent"
 import styles from "./NavigationContainer.css"
 
 export default class NavigationContainer extends Component {
@@ -51,6 +52,7 @@ export default class NavigationContainer extends Component {
         //style={customStyling.navigation}
       >
         <LogoComponent />
+        <UserMenuComponent logout={this.props.logout} />
         <div className={classnames(styles.items)}>
           {compact(
             routes.toArray().map(({ slug, component, label }, i) => {

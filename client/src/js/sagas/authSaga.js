@@ -22,7 +22,7 @@ const loginAPICall = payload => {
 
 const logoutAPICall = payload => {
   // check goserver route
-  return JsonApiRequest(`${process.env.GO_API}v1/logout`, {
+  return JsonApiRequest(`${process.env.SSO_API}logout`, {
     method: 'GET'
   });
 };
@@ -52,10 +52,8 @@ function* makeLoginReuqest(action) {
   }
 }
 
-function* makeLogoutReuqest(action) {
-  const { payload } = action;
-  const { formSubmitted } = payload;
-  const logout = yield call(logoutAPICall, payload);
+function* makeLogoutReuqest() {
+  const logout = yield call(logoutAPICall);
   console.log('logout: ', logout);
   if (hasError(logout)) {
     console.log('logout err!');

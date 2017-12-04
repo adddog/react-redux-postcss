@@ -1,5 +1,5 @@
 import { premiumPartnerApi, saveSettings,getAllSchools } from './apiSaga';
-import { login, logout } from './loginSaga';
+import { login, logout } from './authSaga';
 import resize from './resizeSaga';
 import {
   imageUpload,

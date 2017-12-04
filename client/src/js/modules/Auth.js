@@ -9,15 +9,12 @@ class Auth {
   }
 
   static deauthenticateUser() {
+    console.log('Removing token from local storage!');
     localStorage.removeItem('token');
   }
 
   static getToken() {
     return localStorage.getItem('token');
-  }
-
-  static isValidToken() {
-    return !!(Auth.getToken() !== 'undefined');
   }
 }
 

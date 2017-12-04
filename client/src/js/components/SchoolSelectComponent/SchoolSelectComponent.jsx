@@ -20,10 +20,14 @@ export default class SchoolSelectComponent extends Component {
 
   set data(props) {
     const { auth } = props
-    const schools = auth.get("schools").forEach(schoolObj=>{
-      this._data.set(schoolObj.name, schoolObj)
+    const hasAGlobal = auth.get("hasAGlobal")
+    const userSchools = auth.get("userSchools")
+    const allSchools = auth.get("allSchools").forEach(schoolObj=>{
+      if (hasAGlobal || userSchools.includes(schoolObj.id_ipeds.toString())) {
+        this._data.set(schoolObj.name, schoolObj)
+      }
     })
-     this._dataLabels = Array.from(this._data.keys());
+    this._dataLabels = Array.from(this._data.keys())
   }
 
   get listDisplayData(){
@@ -31,7 +35,7 @@ export default class SchoolSelectComponent extends Component {
   }
 
   get dataDisplayLabels(){
-    return Array.from(this.listDisplayData.keys());
+    return Array.from(this.listDisplayData.keys())
   }
 
   componentWillReceiveProps(nextProps) {

@@ -14,25 +14,16 @@ import { Map } from "immutable"
 
 const RESET_LOGOUT = state =>
   state
-    .set(
-      "id_ipeds",
-      process.env.DEV ? process.env.IPEDS : process.env.IPEDS
-    )
+    .set("id_ipeds", null)
     .set("offline", has(QS.parse(location.search), "offline"))
     .set("isUserAuthenticated", Auth.isUserAuthenticated())
     .set("error", null)
     .set("formSubmitted", null)
     .set("token", Auth.getToken())
-    .set("isValidToken", Auth.isValidToken())
-    .set("isLoggedIn", true) // Auth.getToken() && Auth.isValidToken())
-    .set("schools", [
-      { id_ipeds: 100654, name: "Alabama A & M University" },
-      {
-        id_ipeds: 100663,
-        name: "University of Alabama at Birmingham",
-      },
-      { id_ipeds: 100690, name: "Amridge University" },
-    ])
+    .set("isLoggedIn", Auth.getToken() ? true : false)
+    .set("userSchools", [])
+    .set("allSchools", [])
+    .set("hasAGlobal", false)
 
 const initialState = RESET_LOGOUT(new Map())
 
@@ -44,26 +35,30 @@ export default function auth(state = initialState, action) {
       return state
         .set("error", error)
         .set("formSubmitted", error.formSubmitted)
-      //.set("isLoggedIn", false)
+        .set("isLoggedIn", false)
     }
     case AUTH_LOGIN_SUCCESS: {
+      console.log('AUTH_LOGIN_SUCCESS: user: ', user)
       const { user } = action
       const { jwt } = user
+      let userSchools = []
+      let initialSchool = null
       if (user.remember) {
         Auth.authenticateUser(jwt)
       }
-      const isValidToken = Auth.isValidToken()
+      if (Array.isArray(user.schools) && user.schools.length) {
+        userSchools = user.schools
+        initialSchool = userSchools[0]
+      }
       return state
         .set("token", jwt)
         .set("isUserAuthenticated", Auth.isUserAuthenticated())
         .set("formSubmitted", user.formSubmitted)
         .set("error", null)
-        .set("isValidToken", isValidToken)
-        .set("isLoggedIn", jwt && isValidToken)
-        .set(
-          "schools",
-          user.schools && user.schools.length ? user.schools : []
-        )
+        .set("isLoggedIn", jwt ? true : false)
+        .set("userSchools", userSchools)
+        .set("hasAGlobal", user.hasAGlobal)
+        .set("id_ipeds", initialSchool)
     }
     case AUTH_LOGOUT_SUCCESS: {
       Auth.deauthenticateUser()
@@ -71,7 +66,7 @@ export default function auth(state = initialState, action) {
     }
     case API_ALL_SCHOOLS_SUCCESS: {
       const { response } = action
-      return state.set("schools", response)
+      return state.set("allSchools", response)
     }
     case AUTH_UPDATE_IPEDS: {
       const { payload } = action

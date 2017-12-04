@@ -32,19 +32,6 @@ const API_PREMIUM_PARTNER_GET = (token, query = {}) => {
   })
 }
 
-const API_PREMIUM_PARTNER_NEW = (token, body = {}, headers = {}) => {
-  return postRequest(`${process.env.GO_API}v1/partner`, {
-    headers: merge(
-      {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Authorization: `bearer ${token}`,
-      },
-      headers
-    ),
-    body,
-  })
-}
-
 const API_SETTINGS = (token, body) => {
   return postRequest(`${process.env.GO_API}v1/partner/settings`, {
     method: "POST",
@@ -61,44 +48,20 @@ function* makePremiumPartnerRequest(action) {
   const token = yield getToken(payload)
 
   const ipeds = yield select(state => state.auth.get("id_ipeds"))
-  const premiumPartnerData = yield call(
-    API_PREMIUM_PARTNER_GET,
-    token,
-    {
-      id: ipeds,
-    }
-  )
-
-  if (isError(premiumPartnerData.response)) {
+  if (ipeds) {
+    const premiumPartnerData = yield call(
+      API_PREMIUM_PARTNER_GET,
+      token,
+      {
+        id: ipeds,
+      }
+    )
+  } else {
+    let apiCallFeedback = ipeds ? premiumPartnerData : 'no ipeds in state, skipping api call'
     yield put({
       type: PREMIUM_PARTNER_ERROR,
-      response: premiumPartnerData,
+      response: apiCallFeedback,
     })
-  } else {
-    //NO SCHOOL
-    if (hasError(premiumPartnerData)) {
-      const ipeds = yield select(state => state.auth.get("id_ipeds"))
-      //NEW SCHOOL
-      const newSchoolData = yield call(
-        API_PREMIUM_PARTNER_NEW,
-        token,
-        JSON.stringify({
-          id: ipeds,
-        }),
-        { "Content-Type": "application/json" }
-      )
-      if (hasError(newSchoolData)) {
-      }
-      yield put({
-        type: PREMIUM_PARTNER_SUCCESS,
-        response: newSchoolData,
-      })
-    } else {
-      yield put({
-        type: PREMIUM_PARTNER_SUCCESS,
-        response: premiumPartnerData,
-      })
-    }
   }
 }
 

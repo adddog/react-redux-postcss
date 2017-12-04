@@ -1,6 +1,6 @@
 import React from 'react';
 import LoginPageContainer from 'containers/LoginPageContainer/LoginPageContainer';
-import makeGetLoginErrorMessages from 'selectors/login/makeGetLoginErrorMessages';
+import makeGetLoginErrorMessages from 'selectors/auth/makeGetLoginErrorMessages';
 
 import {
   compose,

@@ -12,7 +12,7 @@ import makeGetComponentStyle from 'selectors/componentUI/makeGetComponentStyle';
 import NavigationContainer from 'containers/NavigationContainer/NavigationContainer';
 import { resize } from 'actions/resize';
 import { toggleMenu } from 'actions/componentUI';
-import { updateIpeds } from 'actions/auth';
+import { updateIpeds, logout } from 'actions/auth';
 
 const DISPLAY_NAME = 'NavigationContainer';
 
@@ -33,7 +33,8 @@ const mapStateToProps = () => {
 const mapDispatchToProps = (dispatch, props) => ({
   resize: () => dispatch(resize()),
   toggleMenu: () => dispatch(toggleMenu()),
-  updateIpeds: id => dispatch(updateIpeds(id))
+  updateIpeds: id => dispatch(updateIpeds(id)),
+  logout: () => dispatch(logout())
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {

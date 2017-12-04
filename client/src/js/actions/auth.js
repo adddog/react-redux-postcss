@@ -2,6 +2,7 @@ import {
   AUTH_LOGIN,
   AUTH_LOGOUT,
   AUTH_LOGIN_SUCCESS,
+  AUTH_LOGOUT_SUCCESS,
   AUTH_UPDATE_IPEDS,
 } from 'actions/actionTypes';
 
@@ -26,6 +27,12 @@ export function loginSuccess(payload = {}) {
   };
 }
 
+export function logoutSuccess(payload = {}) {
+  return {
+    type: AUTH_LOGOUT_SUCCESS,
+    payload: payload,
+  }
+}
 
 export function updateIpeds(payload = null) {
   return {
